@@ -13,6 +13,7 @@ spring:
             - Path=/books/**
           filters:
             - AddRequestHeader=X-Tenant,lerma-corps
+            - AddRequestHeader=X-Type,Zepe-Demo
             - AddResponseHeader=X-Gender,fantasy
   security:
     oauth2:

@@ -1,0 +1,69 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://localhost:55432/zepe-atos?useSSL=false
+    username: zepe_atos
+    password: dbPassword123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cas.lerma-corps.com/realms/zepe-realm
+          jwk-set-uri: https://cas.lerma-corps.com/realms/zepe-realm/protocol/openid-connect/certs
+  batch:
+    job:
+      enabled: false
+
+  #Spring Mail
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ""
+    password: ""
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  sql:
+    init:
+      platform: postgres
+
+server:
+  port: 8080
+
+app:
+  firebase-configuration-file: fcm/zepe-27e68-firebase-adminsdk-4sphr-e54d94090d.json
+
+# Service account location. Can be a filesystem path or a classpath resource. NB: Generate and use your own firebase-service-account.json file.
+gcp:
+  firebase:
+    service-account: classpath:fcm/zepe-27e68-firebase-adminsdk-4sphr-e54d94090d.json
+
+logging:
+  file:
+    name: log/zepe-backend.log
+    logging:
+      level:
+        org:
+          springframework: ERROR
+
+api:
+  micro:
+    auth:
+      url: http://localhost:8080/api/
+    users:
+      url: http://localhost:8081/api/

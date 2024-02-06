@@ -15,6 +15,13 @@ spring:
             - AddRequestHeader=X-Tenant,lerma-corps
             - AddRequestHeader=X-Type,Zepe-Demo
             - AddResponseHeader=X-Gender,fantasy
+        - id: backend-service
+          uri: ${BACKEND_SERVICE_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/**
+          filters:
+            - AddRequestHeader=X-Type,Zepe-App
+
   security:
     oauth2:
       resourceserver:

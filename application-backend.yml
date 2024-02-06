@@ -43,7 +43,7 @@ spring:
       platform: postgres
 
 server:
-  port: 8080
+  port: 8082
 
 app:
   firebase-configuration-file: fcm/zepe-27e68-firebase-adminsdk-4sphr-e54d94090d.json
